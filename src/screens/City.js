@@ -10,20 +10,21 @@ import {
 import { Feather } from "@expo/vector-icons";
 import { city } from "../../assets";
 import IconText from "../components/IconText";
-
-export default function City() {
+import moment from 'moment'
+export default function City({weatherData}) {
+  const {name,country,population,sunrise,sunset}=weatherData
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground source={city} style={styles.imageLayout}>
-        <Text style={[styles.cityName, styles.cityText]}>London</Text>
-        <Text style={[styles.countryName, styles.cityText]}>UK</Text>
+        <Text style={[styles.cityName, styles.cityText]}>{name}</Text>
+        <Text style={[styles.countryName, styles.cityText]}>{country}</Text>
         <View style={[styles.populationWrapper, styles.rowLayout]}>
-          <IconText iconName={'user'} iconColor={'red'} bodyText={'8000'} bodyTextStyles={styles.populationText}/>
+          <IconText iconName={'user'} iconColor={'red'} bodyText={`Population: ${population}`} bodyTextStyles={styles.populationText}/>
         </View>
         <View style={[styles.riseSetWrapper, styles.rowLayout]}>
 
-          <IconText iconName={'sunrise'} iconColor={'white'} bodyText={'10:46:58am'} bodyTextStyles={styles.riseSetText}/>
-          <IconText iconName={'sunset'} iconColor={'white'} bodyText={'17:28:15pm'} bodyTextStyles={styles.riseSetText}/>
+          <IconText iconName={'sunrise'} iconColor={'white'} bodyText={moment(sunrise).format('h:mm:ss a')} bodyTextStyles={styles.riseSetText}/>
+          <IconText iconName={'sunset'} iconColor={'white'} bodyText={moment(sunset).format('h:mm:ss a')} bodyTextStyles={styles.riseSetText}/>
 
         </View>
       </ImageBackground>

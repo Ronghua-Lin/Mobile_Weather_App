@@ -1,6 +1,6 @@
+
 import React from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
-import { Feather } from "@expo/vector-icons";
+import { Text, View} from "react-native";
 
 export default function RowText(props) {
   const {
